@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1040">
+  <title>밀도 측정 실험</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app-container">
+    <div id="background-wrapper"></div>
+
+    <h2>🔬 밀도 측정하기 (질량과 부피)</h2>
+    <p class="description">
+      아래 보관함의 물체를 저울로 드래그하여 "질량"을 측정하세요.<br>
+      물체를 메스실린더로 드래그하여 "부피"를 측정하세요.
+    </p>
+
+    <div id="experiment-zones">
+
+      <div id="scale-simulation-area">
+        <div id="electronic-scale">
+          <div id="mass-display">0.0 g</div>
+          <div id="scale-buttons">
+            <button id="power-button">전원</button>
+            <button class="control-button" id="settings-button">설정</button>
+            <button class="control-button" id="zero-button">영점</button>
+          </div>
+          <div id="weighing-pan">
+            </div>
+        </div>
+      </div>
+
+      <div id="volume-simulation-area">
+        <div id="cylinder-container">
+          <img id="cylinder-img" src="measuringcylinder.png" alt="메스실린더 이미지">
+          <div id="tank">
+            <div id="water-level"></div>
+            <div id="submerged-objects-container">
+              </div>
+            <div id="scale">
+              <div class="tick" style="bottom: 0%">0</div>
+              <div class="tick" style="bottom: 10%">20</div>
+              <div class="tick" style="bottom: 20%">40</div>
+              <div class="tick" style="bottom: 30%">60</div>
+              <div class="tick" style="bottom: 40%">80</div>
+              <div class="tick" style="bottom: 50%">100</div>
+              <div class="tick" style="bottom: 60%">120</div>
+              <div class="tick" style="bottom: 70%">140</div>
+              <div class="tick" style="bottom: 80%">160</div>
+              <div class="tick" style="bottom: 90%">180</div>
+              <div class="tick" style="bottom: 100%">200</div>
+            </div>
+          </div>
+        </div>
+        <div id="controls">
+          <label for="waterLevelSlider">💧 초기 물 높이 조절</label>
+          <input type="range" id="waterLevelSlider" min="0" max="150" value="0" step="1">
+        </div>
+        
+        <div id="current-volume-display">현재 물의 부피: 0.00 mL</div>
+
+      </div>
+    </div>
+
+    <div id="object-pool">
+      
+      <div class="pool-item-container">
+        <div class="object-item" data-type="iron-small"></div>
+        <div class="pool-item-label">작은 철조각</div>
+      </div>
+      <div class="pool-item-container">
+        <div class="object-item" data-type="iron-large"></div>
+        <div class="pool-item-label">큰 철 조각</div>
+      </div>
+      <div class="pool-item-container">
+        <div class="object-item" data-type="alu-small"></div>
+        <div class="pool-item-label">작은 알루미늄 조각</div>
+      </div>
+      <div class="pool-item-container">
+        <div class="object-item" data-type="alu-large"></div>
+        <div class="pool-item-label">큰 알루미늄 조각</div>
+      </div>
+
+      <div class="pool-item-container">
+        <div class="object-item" data-type="sus-50g"></div>
+        <div class="pool-item-label">작은 서스추</div>
+      </div>
+      <div class="pool-item-container">
+        <div class="object-item" data-type="sus-100g"></div>
+        <div class="pool-item-label">큰 서스추</div>
+      </div>
+      
+      <div class="pool-item-container">
+        <div class="object-item" data-type="brass-50g"></div>
+        <div class="pool-item-label">작은 황동추</div>
+      </div>
+      <div class="pool-item-container">
+        <div class="object-item" data-type="brass-100g"></div>
+        <div class="pool-item-label">큰 황동추</div>
+      </div>
+    </div>
+
+  </div> <script src="script.js"></script>
+</body>
+</html>

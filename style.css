@@ -1,0 +1,365 @@
+/* --- (기본) 기본 및 앱 레이아웃 --- */
+body {
+  font-family: sans-serif;
+  background: #eef;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 100vh;
+}
+
+#app-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1000px;
+  height: auto;
+  margin: 20px;
+  padding: 20px;
+  background-color: #ffffffa0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-sizing: border-box; 
+}
+
+#background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("lab-background.png");
+  background-repeat: repeat;
+  z-index: -3;
+}
+
+h2 { text-align: center; margin-top: 0; }
+
+.description {
+  width: 100%;
+  background-color: #ffffffd0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+  margin-bottom: 40px; 
+  box-sizing: border-box;
+}
+
+/* --- (A) 실험 공간 (좌/우) --- */
+#experiment-zones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 550px;
+}
+
+/* --- (A-1) 질량 측정 영역 --- */
+#scale-simulation-area {
+  position: relative;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#electronic-scale {
+  position: relative;
+  width: 370px;
+  height: 300px;
+  background-image: url('scale.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#mass-display {
+  position: absolute;
+  top: 115px;
+  left: 30px;
+  width: 170px;
+  height: 40px;
+  background-color: #3a3a3a;
+  color: #00ff41;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid #222;
+}
+
+#weighing-pan {
+  position: absolute;
+  top: 5px;
+  left: 70px;
+  width: 230px;
+  height: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#weighing-pan .object-item {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0; 
+}
+
+#scale-buttons {
+  position: absolute;
+  top: 115px;
+  left: 210px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+#power-button, .control-button {
+  height: 43px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+#power-button { width: 40px; background-color: #e74c3c; }
+.control-button { width: 45px; background-color: #7f8c8d; }
+
+/* --- (A-2) 부피 측정 영역 --- */
+#volume-simulation-area {
+  position: relative;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cylinder-container {
+  position: relative;
+  width: 165px;
+  height: 500px;
+}
+
+#cylinder-img {
+  position: absolute;
+  width: 165px;
+  height: 500px;
+  top: -40px;
+  left: -30px;
+  opacity: 0.2;
+  z-index: 5;
+  pointer-events: none;
+}
+
+#tank {
+  position: relative;
+  width: 100px;
+  height: 400px;
+  background: #a0d8ef;
+  border: 2px solid #0077b6;
+  overflow: hidden;
+  z-index: 2;
+  margin-top: 20px;
+}
+
+#submerged-objects-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2px;
+    padding-bottom: 5px;
+}
+
+#submerged-objects-container .object-item {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0; 
+}
+
+#water-level {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #0077b6;
+  height: 0px;
+  transition: height 0.3s ease;
+  z-index: 2;
+}
+
+#scale {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.tick {
+  position: absolute;
+  left: 5px;
+  font-size: 12px;
+  color: #000;
+  width: 100%;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #000;
+}
+.subtick { position: absolute; right: 5px; width: 30%; height: 0; border-bottom: 1px solid #444; opacity: 0.6; }
+.midtick { position: absolute; right: 5px; width: 60%; height: 0; border-bottom: 2px solid #444; opacity: 0.8; }
+
+#controls {
+  margin-top: 10px;
+  width: 300px;
+  background: #f0f0f0e0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  z-index: 20;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-sizing: border-box; 
+}
+#controls label { font-weight: bold; font-size: 14px; }
+#controls input[type="range"] { width: 100%; margin-top: 5px; }
+
+#current-volume-display {
+  margin-top: 10px;
+  width: 300px;
+  background: #f0f8ff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #0077b6;
+  box-sizing: border-box; 
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #003366;
+}
+
+
+/* --- (C) 물체 보관함 (하단) --- */
+#object-pool {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  background: #ddddddc5;
+  border: 2px solid #aaa;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.pool-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.pool-item-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* --- (D) 물체 공통 스타일 --- */
+.object-item {
+  width: 50px;
+  height: 50px;
+  cursor: grab;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 5;
+  flex-shrink: 0;
+  transition: width 0.1s ease, height 0.1s ease;
+}
+
+.dragging {
+  position: fixed !important; 
+  z-index: 1000;
+  cursor: grabbing;
+  opacity: 0.7;
+  transform: none !important;
+}
+
+/* ★ [수정] 추 스타일 - 공통 (iron, alu 추가) */
+.object-item[data-type^="sus-"],
+.object-item[data-type^="brass-"],
+.object-item[data-type^="iron-"],
+.object-item[data-type^="alu-"] {
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+/* ★ [수정] 큰 추(100g) 크기 재정의 (iron-large, alu-large 추가) */
+.object-item[data-type="sus-100g"],
+.object-item[data-type="brass-100g"],
+.object-item[data-type="iron-large"],
+.object-item[data-type="alu-large"] {
+  width: 70px;
+  height: 70px;
+  font-size: 16px;
+}
+
+/* 서스추 (Stainless Steel) - 은색/회색 */
+.object-item[data-type^="sus-"] {
+  background-color: #c0c0c0; /* Silver */
+  border: 2px solid #707070;
+}
+.object-item[data-type="sus-50g"]::before { content: ''; }
+.object-item[data-type="sus-100g"]::before { content: ''; }
+
+/* 황동추 (Brass) - 금색/황동색 */
+.object-item[data-type^="brass-"] {
+  background-color: #daa520; /* Goldenrod */
+  border: 2px solid #b8860b; /* DarkGoldenrod */
+}
+.object-item[data-type="brass-50g"]::before { content: ''; }
+.object-item[data-type="brass-100g"]::before { content: ''; }
+
+/* ★ [신규] 철조각 (Iron) - 짙은 회색 */
+.object-item[data-type^="iron-"] {
+  background-color: #5A5A5A;
+  border: 2px solid #333333;
+}
+.object-item[data-type="iron-small"]::before { content: ''; }
+.object-item[data-type="iron-large"]::before { content: ''; }
+
+/* ★ [신규] 알루미늄 (Aluminum) - 밝은 은색 */
+.object-item[data-type^="alu-"] {
+  background-color: #E0E0E0;
+  border: 2px solid #999999;
+}
+.object-item[data-type="alu-small"]::before { content: ''; }
+.object-item[data-type="alu-large"]::before { content: ''; }
